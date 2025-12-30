@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone App Receiver</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #0b021a; /* Matching your Just Dance theme */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+
+        .header {
+            background: rgba(15, 5, 40, 0.9);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #9d00ff;
+        }
+
+        .status-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #00ff00;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        iframe {
+            flex-grow: 1;
+            width: 100%;
+            border: none;
+            background: white;
+        }
+
+        .error-msg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ff007a;
+            z-index: -1; /* Behind iframe if it loads */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div><strong>JUST DANCE</strong> <span style="opacity: 0.6;">| Receiver</span></div>
+        <div>
+            <span class="status-dot"></span>
+            Target: 192.168.1.5:8080
+        </div>
+    </div>
+
+    <iframe 
+        src="http://192.168.1.5:8080" 
+        title="Mobile App Server"
+        id="app-frame">
+    </iframe>
+
+    <div class="error-msg">
+        <h2>Connection Blocked?</h2>
+        <p>If you see nothing above, your browser is blocking the <strong>HTTP</strong> connection from an <strong>HTTPS</strong> site.</p>
+        <p>Try clicking the "Shield" or "Lock" icon in your URL bar and selecting "Allow Insecure Content".</p>
+    </div>
+
+</body>
+</html>
